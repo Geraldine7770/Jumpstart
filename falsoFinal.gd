@@ -17,5 +17,5 @@ func _on_body_entered(body: Node2D) -> void:
 		if tiene_llave.llave == false:
 			$"../CharacterBody2D".position = Vector2(12491,-3238)
 		else:
-			$"../Label4".visible
+			$"../Label4".visible = true
 	pass # Replace with function body.
