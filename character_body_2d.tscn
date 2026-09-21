@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckooder7tojko"]
+
+[ext_resource type="Script" uid="uid://7flyi0y88ovu" path="res://character_body_2d.gd" id="1_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://cfaymwhh3rnss" path="res://kenney_pixel-platformer/Tiles/Characters/tile_0000.png" id="2_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://wbgkod8sjybn" path="res://kenney_pixel-platformer/Tiles/tile_0027.png" id="3_ghijl"]
+[ext_resource type="Texture2D" uid="uid://clxusybaenxii" path="res://kenney_pixel-platformer/Tiles/Characters/tile_0001.png" id="4_44cfe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghijl"]
+radius = 37.529987
+
+[sub_resource type="Animation" id="Animation_dd465"]
+resource_name = "jugador"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_ij6vw"), ExtResource("4_44cfe")]
+}
+
+[sub_resource type="Animation" id="Animation_lhvu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ij6vw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sjlk"]
+_data = {
+&"RESET": SubResource("Animation_lhvu3"),
+&"jugador": SubResource("Animation_dd465")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ij6vw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_ij6vw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_ghijl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+
+[node name="llaveP" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0.99999905, -58)
+scale = Vector2(2.1944447, 1.7777781)
+texture = ExtResource("3_ghijl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4sjlk")
+}

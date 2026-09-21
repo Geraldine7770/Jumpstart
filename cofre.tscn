@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://phgoi35aoqv"]
+
+[ext_resource type="Script" uid="uid://diri0qxpmfqk0" path="res://cofre.gd" id="1_ynwns"]
+[ext_resource type="Texture2D" uid="uid://c5wty6627rp0f" path="res://kenney_pixel-platformer/Tiles/tile_0028.png" id="2_2td3n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ctoc"]
+size = Vector2(46, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynwns"]
+size = Vector2(32, 49)
+
+[node name="cofre" type="Area2D"]
+script = ExtResource("1_ynwns")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_2td3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_4ctoc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_ynwns")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

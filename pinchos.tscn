@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqqt87rijchat"]
+
+[ext_resource type="Script" uid="uid://bdaenmfc16uiw" path="res://pinchos.gd" id="1_i3k25"]
+[ext_resource type="Texture2D" uid="uid://b80daorws4dmq" path="res://kenney_pixel-platformer/Tiles/tile_0068.png" id="1_kofkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3k25"]
+size = Vector2(76, 36)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_i3k25")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_kofkl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 28)
+shape = SubResource("RectangleShape2D_i3k25")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
